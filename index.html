@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="viettlot" type="text">
+<button onclick="quayThuong()">QUAY THUONG</button>
+<script>
+    let quayThuongRanDom;
+    function quayThuong() {
+        quayThuongRanDom = +document.getElementById('viettlot').value;
+        console.log('quayThuongRanDom = ', quayThuongRanDom)
+        createRandom();
+    }
+    let i = 1;
+    function createRandom() {
+        console.log('goi ham createRandom')
+        let c1121g1 = ['Trí','Song', 'Hùng', 'VHùng', 'Tuấn','Anh', 'Hưng', 'Đạt', 'Hiệp','minh','Nhung', 'Zun','Đức', 'Long']
+        console.log('c11 leng', c1121g1.length)
+        let newC1121G1 = [];
+        console.log('trước khi trộn ', c1121g1)
+        let random;
+        let check;
+        while (newC1121G1.length<c1121g1.length){
+            check = false;
+            random = Math.floor(Math.random()*c1121g1.length);
+            if(newC1121G1.length==0){
+                newC1121G1.push(c1121g1[random]);
+            }
+            for (let i=0; i<newC1121G1.length;i++){
+                if(c1121g1[random]===newC1121G1[i]){
+                    check = true;
+                }
+            }
+            if(!check){
+                newC1121G1.push(c1121g1[random])
+            }
+        }
+        const timeOut = setTimeout(createRandom,5000);
+        i++;
+        console.log('i = ', i)
+        console.log('quayThuongRandom trong create = ', quayThuongRanDom)
+        if(i>quayThuongRanDom){
+            console.log('vao if voi i = ', i)
+            clearTimeout(timeOut);
+            i=1;
+        }
+        console.log('Mảng sau khi trộn  ngẫu nhiên--> ', newC1121G1)
+    }
+
+
+</script>
+</body>
+</html>
